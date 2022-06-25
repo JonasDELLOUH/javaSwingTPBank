@@ -22,21 +22,29 @@ public class DepositScreen extends JFrame {
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                bankAccount.deposit(Integer.parseInt(textDepositAmount.getText()));
-                saveAction();
+                if(bankAccount.deposit(Integer.parseInt(textDepositAmount.getText())) == true){
+                    AnswerDialog answerDeposit = new AnswerDialog("Le dépôt a été effectué avec succès");
+                    answerDeposit.setVisible(true);
+                    disposing();
+                }
+                else{
+
+                }
+
             }
         });
         donTSaveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                saveAction();
+                disposing();
             }
         });
     }
 
-    private void saveAction() {
+    private void disposing() {
         this.dispose();
         BankAccountScreen bankAccountScreen = new BankAccountScreen(bankAccount);
+        bankAccountScreen.setVisible(true);
     }
 
 }

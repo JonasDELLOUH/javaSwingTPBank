@@ -31,12 +31,16 @@ public class CreateAccount extends  JFrame{
                     NormalAccount normalAccount = new NormalAccount(textOwnerName.getText(), textAccountNumber.getText(), Integer.parseInt(textSolde.getText()));
                     normalAccount.setInterest(0);
                     DbConnection.insertAccount(normalAccount);
+                    AnswerDialog answerDeposit = new AnswerDialog("Votre compte normal a été créé avec succès");
+                    answerDeposit.setVisible(true);
                     System.out.println("create Normal Account");
                 }
                 else{
                     SparingAccount sparingAccount = new SparingAccount(textOwnerName.getText(), textAccountNumber.getText(), Integer.parseInt(textSolde.getText()));
                     sparingAccount.setInterest(Double.parseDouble(textInterst.getText()));
                     DbConnection.insertAccount(sparingAccount);
+                    AnswerDialog answerDeposit = new AnswerDialog("Votre compte épargne a été créé avec succès");
+                    answerDeposit.setVisible(true);
                     System.out.println("create Sparing Account");
                 }
                 disposing();

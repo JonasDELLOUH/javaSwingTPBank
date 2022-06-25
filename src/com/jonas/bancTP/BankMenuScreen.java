@@ -25,6 +25,7 @@ public class BankMenuScreen extends JFrame{
         this.setContentPane(this.mainPanel);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
+        this.setSize(600,500);
         textOwnerName.setEnabled(false);
         textAccountNumber.setEnabled(false);
         textSolde.setEnabled(false);
@@ -124,7 +125,6 @@ public class BankMenuScreen extends JFrame{
     public static void main(String[] args){
         BankMenuScreen bankMenuScreen = new BankMenuScreen();
         bankMenuScreen.setVisible(true);
-        bankMenuScreen.setSize(500,500);
 
         NormalAccount n1 = new NormalAccount("Jonas", "00012365", 0);
         NormalAccount n2 = new NormalAccount("Jean", "00012006", 100);

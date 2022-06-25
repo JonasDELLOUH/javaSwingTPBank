@@ -152,8 +152,9 @@ public class DbConnection {
         ResultSet rs = null;
 
         try {
-            String sql = "SELECT * FROM LOAN ";
+            String sql = "SELECT * FROM LOAN WHERE bankAccountNumber=?";
             ps = con.prepareStatement(sql);
+            ps.setString(1, bankAccount.getAccountNumber());
             rs = ps.executeQuery();
             System.out.println("ALL ACCOUNTS : \n");
             while (rs.next()) {

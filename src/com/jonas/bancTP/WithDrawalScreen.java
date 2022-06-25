@@ -21,25 +21,30 @@ public class WithDrawalScreen extends JFrame{
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if(bankAccount.withdrawal(Integer.parseInt(textWithdrawalAmount.getText())) == false){
-
+                if(bankAccount.withdrawal(Integer.parseInt(textWithdrawalAmount.getText())) == true){
+                    AnswerDialog answerDeposit = new AnswerDialog("Le retrait a été effectué avec succès");
+                    answerDeposit.setVisible(true);
+                    disposing();
                 }
                 else{
-                    saveAction();
+                    AnswerDialog answerDeposit = new AnswerDialog("Vous n'avez pas assez d'argent dans votre compte pour effectuer ce retrait");
+                    answerDeposit.setVisible(true);
+                    disposing();
                 }
-                saveAction();
+
             }
         });
         donTSaveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                saveAction();
+                disposing();
             }
         });
     }
 
-    private void saveAction() {
+    private void disposing() {
         this.dispose();
         BankAccountScreen bankAccountScreen = new BankAccountScreen(bankAccount);
+        bankAccountScreen.setVisible(true);
     }
 }

@@ -53,10 +53,17 @@ public class PayLoanScreen extends  JFrame{
                 if (accountNumber >= 0) {
                     Loan loan = loans.get(accountNumber);
                     if( bankAccount.payYourLoans(loan) == false){
+                        AnswerDialog answerDeposit = new AnswerDialog("Votre solde est insuffisant pour payer ce prêt");
+                        answerDeposit.setVisible(true);
+                        disposing();
+                        PayLoanScreen payLoanScreen = new PayLoanScreen(bankAccount);
+                        payLoanScreen.setVisible(true);
 
                     }
                     else {
                         refreshLoanlist();
+                        AnswerDialog answerDeposit = new AnswerDialog("Vous avez payer ce prêt avec succès");
+                        answerDeposit.setVisible(true);
                         disposing();
                         PayLoanScreen payLoanScreen = new PayLoanScreen(bankAccount);
                         payLoanScreen.setVisible(true);
